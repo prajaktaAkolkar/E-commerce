@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="block-slider block-slider4">           
+   
+           <ul class="" id="bxslider-home4" >
+   
+               <owl-carousel-o [options]="customOptions">
+                   <ng-container  *ngFor="let image of images" style="margin: 10%;">
+                   <ng-template carouselSlide>   
+               <li>
+                   <img [src]="image.banner" alt="{{ image.Images }}">
+                   <div class="caption-group">
+                       <h2 class="caption title">
+                           iPhone <span class="primary">6 <strong>Plus</strong></span>
+                       </h2>
+                       <h4 class="caption subtitle">Dual SIM</h4>
+                       <a class="caption button-radius"><span class="icon"></span>Shop now</a>
+                   </div>
+               </li>
+               </ng-template>
+           </ng-container>
+       </owl-carousel-o>
+   </ul>
+   </div>       
+   
+       <div class="promo-area">
+           <div class="zigzag-bottom"></div>
+           <div class="container">
+               <div class="row" *ngFor="let promo of promos">
+                   <div class="col-md-3 col-sm-6">
+                       <div class="single-promo promo1">
+                           <i class="fa fa-refresh"></i>
+                           <p>{{ promo.promo1 }}</p>
+                       </div>
+                   </div>
+                   <div class="col-md-3 col-sm-6">
+                       <div class="single-promo promo2">
+                           <i class="fa fa-truck"></i>
+                           <p>{{ promo.promo2 }}</p>
+                       </div>
+                   </div>
+                   <div class="col-md-3 col-sm-6">
+                       <div class="single-promo promo3">
+                           <i class="fa fa-lock"></i>
+                           <p>{{ promo.promo3 }}</p>
+                       </div>
+                   </div>
+                   <div class="col-md-3 col-sm-6">
+                       <div class="single-promo promo4">
+                           <i class="fa fa-gift"></i>
+                           <p>{{ promo.promo4  }}</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>

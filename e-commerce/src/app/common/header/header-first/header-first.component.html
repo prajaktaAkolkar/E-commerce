@@ -1,0 +1,55 @@
+
+    <div class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="user-menu">
+                        <ul>
+                            <li>
+                                <a href="#"><i class="fa fa-user"></i> My Account</a>
+                            </li>
+                            <!-- <li class="dropdown dropdown-small">
+                                <a style="cursor: pointer;color: #999;"><i><img src="https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png" height="30px" width="30px" class="rounded" alt="Cinque Terre"></i>Profile</a>
+
+                            </li> -->
+                            <li><a style="cursor: pointer;color: #999;"><i class="fa fa-shopping-cart"></i> Orders</a></li>
+                            <li><a  routerLink="/cart"><i class="fa fa-user"></i> My Cart</a></li>
+                            <!-- <li *ngIf="isAuthenticated"><a routerLink="/checkout"><i class="fa fa-user"></i> Checkout</a></li> -->
+                            <li ><a routerLink="/login"><i class="fa fa-user"></i> Login</a></li>
+                            <li>
+                                <a style="cursor: pointer;color: #999;"><i class="fa fa-user"></i>Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="header-right user-menu mt-2">
+                        <ul class="list-unstyled list-inline">
+                                  <div ngbDropdown class="d-inline-block">
+                                    <a id="dropdownBasic1" ngbDropdownToggle class="m-3"><span class="key">currency :</span><span class="value">USD </span></a>
+                                    <!-- <button type="button" id="dropdownBasic1" ngbDropdownToggle><span class="key">currency :</span><span class="value">USD </span></button> -->
+                                    <ul ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                        <a href="#" ngbDropdownItem>USD</a>
+                                        <a href="#" ngbDropdownItem>INR</a>
+                                        <a href="#" ngbDropdownItem>GBP</a>
+                                    </ul>
+                                  </div>
+                            
+                                  <div ngbDropdown class="d-inline-block">
+                                    <a id="dropdownBasic1" ngbDropdownToggle><span class="key">language :</span><span class="value">English </span></a>
+                                    <!-- <button type="button" id="dropdownBasic1" ngbDropdownToggle><span class="key">currency :</span><span class="value">USD </span></button> -->
+                                    <ul ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                        <a href="#" ngbDropdownItem>English</a>
+                                        <a href="#" ngbDropdownItem>French</a>
+                                        <a href="#" ngbDropdownItem>German</a>
+                                    </ul>
+                                  </div>
+                          
+                        </ul>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>

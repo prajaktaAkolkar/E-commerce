@@ -1,0 +1,59 @@
+
+  <div class="maincontent-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="latest-product">
+                    <h2 class="section-title">Latest Products</h2>
+                    <div class="product-carousel">
+                        <owl-carousel-o [options]="customOptions">
+                            <ng-container *ngFor="let product of latestProducts"> 
+                            <ng-template carouselSlide>                               
+                                 <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img [src]= "product.image" alt="{{ product.image}}" height="80px" width="80px">
+                                        <div class="product-hover">
+                                            <a  class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                            <a routerLink="/product_details/{{product.id}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <h2><a routerLink="/product_details">{{ product.product_name}}</a></h2>
+        
+                                    <div class="product-carousel-price">
+                                        <ins>${{ product.price}}</ins>
+                                        <!-- <del>${{ product.price}}</del> -->
+                                    </div>                            
+                                </div> 
+                            </ng-template>
+                        </ng-container>
+                        </owl-carousel-o>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+<div class="brands-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="brand-wrapper">
+                    <div class="brand-list">
+                        <owl-carousel-o [options]="customOptions">
+                         <ng-container *ngFor="let brand of brands">
+                            <ng-template carouselSlide>
+                               <img [src]=" brand.image " alt="{{ brand.image }}">
+                            </ng-template>
+                        </ng-container>
+                        </owl-carousel-o>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End brands area -->
