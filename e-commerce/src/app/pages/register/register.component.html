@@ -1,1 +1,100 @@
-<p>register works!</p>
+<div class="container p-4 m-4">
+	<div class="row" *ngIf="isLoginMode">
+			<div *ngIf="isLoading" style="text-align: center;">
+			 <app-loading-spinner></app-loading-spinner>
+			</div>
+		<div class="col-xs-12 col-md-6 col-md-offset-3">
+			<form  [formGroup]="loginInfo" (submit)="onSubmit()" *ngIf="!isLoading">
+				<!-- <div formGroupName="loginInfo"> -->
+			<div class="form-group">
+				<label for="email">E-mail</label>
+				<input type="email" 
+				id="email" 
+				class="form-control"
+				formControlName = "email"
+				>
+				<span  
+				*ngIf="!loginInfo.get('email').valid && loginInfo.get('email').touched"
+				class="help-block">
+				Please Enter the valid email!
+			  </span>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" id="password" class="form-control" formControlName="password"  minlength="5">
+				<span  
+				*ngIf="!loginInfo.get('password').valid && loginInfo.get('password').touched"
+				class="help-block">
+				Please Enter the valid Password!
+			  </span>
+			</div>
+			<div class="m-4">
+				<button class="btn btn-primary" type="submit" [disabled]="!loginInfo.valid">{{isLoginMode ? 'Login' : 'Signup'}}</button> |
+			
+				<button class="btn btn-primary" (click)="onSwitchMode()" type="button">
+					Switch to {{isLoginMode ? 'Sign Up':'Login'}}
+				</button>
+			</div>
+		<!-- </div> -->
+		</form>
+		
+		</div>
+	</div>
+
+	<div class="row" *ngIf="!isLoginMode">
+		<div class="col-xs-12 col-md-6 col-md-offset-3">
+		<div class="alert alert-danger" *ngIf="error">
+           <p>{{error}}</p>
+		</div>
+
+			<div *ngIf="isLoading" style="text-align: center;">
+				<app-loading-spinner></app-loading-spinner>
+			   </div>
+			<form  [formGroup]="signUpInfo" (submit)="onSubmit()" *ngIf="!isLoading">
+			<div class="form-group">
+				<label for="firstName">First Name</label>
+				<input type="text" id="firstName" class="form-control" formControlName="firstName">
+				<span  
+				*ngIf="!signUpInfo.get('firstName').valid && signUpInfo.get('firstName').touched"
+				class="help-block">
+				Please Enter the first Name!
+			  </span>
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name</label>
+				<input type="text" id="lastName" class="form-control" formControlName="lastName">
+				<span  
+				*ngIf="!signUpInfo.get('lastName').valid && signUpInfo.get('lastName').touched"
+				class="help-block">
+				Please Enter the Last Name!
+			  </span>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" id="email" class="form-control" formControlName="email">
+				<span  
+				*ngIf="!signUpInfo.get('email').valid && signUpInfo.get('email').touched"
+				class="help-block">
+				Please Enter the Valid Email!
+			  </span>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" id="password" class="form-control" formControlName="password">
+				<span  
+				*ngIf="!signUpInfo.get('password').valid && signUpInfo.get('password').touched"
+				class="help-block">
+				Please Enter the Valid Password!
+			  </span>
+			</div>
+			<div class="m-4">
+				<button class="btn btn-primary" type="submit" [disabled]="!signUpInfo.valid">{{isLoginMode ? 'Login' : 'Signup'}}</button> |
+			
+				<button class="btn btn-primary" (click)="onSwitchMode()" type="button">
+					Switch to {{isLoginMode ? 'Sing Up':'Login'}}
+				</button>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>

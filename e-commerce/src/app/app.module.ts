@@ -4,6 +4,7 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -30,6 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LatestProductComponent } from './pages/home/latest-product/latest-product.component';
 import { RecentProductsComponent } from './pages/home/recent-products/recent-products.component';
 import { HomeSliderComponent } from './pages/home/home-slider/home-slider.component';
+import { LoadingSpinnerComponent } from './pages/register/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { HomeSliderComponent } from './pages/home/home-slider/home-slider.compon
     FooterSecondComponent,
     LatestProductComponent,
     RecentProductsComponent,
-    HomeSliderComponent
+    HomeSliderComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,9 @@ import { HomeSliderComponent } from './pages/home/home-slider/home-slider.compon
     AppRoutingModule,
     NgbModule,
     CarouselModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

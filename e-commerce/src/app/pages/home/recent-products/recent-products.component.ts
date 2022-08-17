@@ -8,6 +8,7 @@ import { ProductService } from 'src/app/service/product/product.service';
 })
 export class RecentProductsComponent implements OnInit {
 product :any =[];
+  
   constructor(private productService:ProductService) { }
 
   ngOnInit(): void {

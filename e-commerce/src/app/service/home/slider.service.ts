@@ -10,6 +10,8 @@ export class SliderService {
   Images :any =[];
   promo :any = [];
   allProducts :any =[];
+
+
   constructor(private http:HttpClient , private router :Router) { }
 
   getImages() {
@@ -25,17 +27,17 @@ export class SliderService {
 //     ];
 // }
 getPromo(){
+
 return this.promo = [
     {
-       promo1: '30 Days return',
-    
-       promo2: 'Free shipping',
-    
-       promo3: 'Secure payments',
-    
+     promo1: '30 Days return'
+   , promo2: 'Free shipping'
+     ,
+       promo3: 'Secure payments'
+  ,
        promo4: 'New products'
-
     }
-];
+  ]
+
 }
 }

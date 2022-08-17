@@ -9,6 +9,11 @@ import { SliderService } from 'src/app/service/home/slider.service';
   export class HomeSliderComponent implements OnInit {
     images: any = [];
     promos: any = [];
+    arr: any =[];
+    promo1: any;
+    promo2: any;
+    promo3: any;
+    promo4: any;
     constructor(private sliderService :SliderService) { }
 
     ngOnInit(): void {
@@ -17,7 +22,9 @@ import { SliderService } from 'src/app/service/home/slider.service';
           this.images = imagesData.data;
       console.log(this.images)
         });
+       
     this.promos = this.sliderService.getPromo();
+   
     }
     customOptions: OwlOptions = {
       loop: true,
