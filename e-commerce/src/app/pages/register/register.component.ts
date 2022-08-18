@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import {FormsModule,ReactiveFormsModule,FormBuilder} from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService ,AuthResponseData} from 'src/app/service/auth/auth.service';
 
@@ -19,7 +20,7 @@ error:string = '';
 onSwitchMode(){
   this.isLoginMode = !this.isLoginMode;
 }
-  constructor(private fb : FormBuilder, private authService:AuthService) { }
+  constructor(private fb : FormBuilder, private authService:AuthService, private router : Router) { }
 
   ngOnInit(): void {
    this.loginInfo = this.fb.group({
@@ -80,14 +81,22 @@ onSwitchMode(){
     authObs = this.authService.signUp(first_name,last_name,email,password);
       this.signUpInfo.reset();
     }
+
     authObs.subscribe(resData=>{
       console.log(resData);
       this.isLoading = false;
+      if(this.isLoginMode) {
+        this.router.navigate(['']);
+      }
+      else{
+        alert("You have register successfull. Please login!")
+      }
     },errorMessage=>{
         console.log(errorMessage);
         this.error =errorMessage
         this.isLoading = false;
-    })
+    });
+
   }
 
 }

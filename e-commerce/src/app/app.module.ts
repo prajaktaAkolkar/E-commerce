@@ -32,6 +32,7 @@ import { LatestProductComponent } from './pages/home/latest-product/latest-produ
 import { RecentProductsComponent } from './pages/home/recent-products/recent-products.component';
 import { HomeSliderComponent } from './pages/home/home-slider/home-slider.component';
 import { LoadingSpinnerComponent } from './pages/register/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './service/auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { LoadingSpinnerComponent } from './pages/register/loading-spinner/loadin
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ {provide : HTTP_INTERCEPTORS , useClass : AuthInterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
