@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
+  productTotalAmount :number =0
   constructor() { }
 
   ngOnInit(): void {

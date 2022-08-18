@@ -12,7 +12,7 @@
 
                             </li> -->
                         <li *ngIf="isAuthenticated">
-                            <a style="cursor: pointer;color: #999;">
+                            <a style="cursor: pointer;color: #999;" routerLink="orders">
                              <i class="fa fa-shopping-cart"></i> Orders</a>
                         </li>
                         <li *ngIf="isAuthenticated"><a routerLink="/cart"><i class="fa fa-user"></i> My Cart</a></li>

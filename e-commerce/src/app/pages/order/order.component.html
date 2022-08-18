@@ -1,1 +1,56 @@
-<p>order works!</p>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-wrap">
+                    <table class="table">
+                      <thead class="thead-primary">
+                        <tr>
+                           
+                            <th>Image</th>
+                            <th>Product Name</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Status</th>
+                          <th>view details</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="alert" role="alert" *ngFor="let order of orders">
+                            
+                            <td>
+                                <div class="img">
+                                    <img width="90" height="90" alt="T_4_front"
+                                    class="attachment-shop_catalog wp-post-image"
+                                    src="{{ order.banner }}"> 
+                                </div>
+                            </td>
+                          <td>
+                             
+                                  <span>{{ order.product_name}} </span>
+                                  
+                          </td>
+                          <td>
+                            <span>${{ order.price}}</span>
+                          </td>
+                          <td>
+                            
+                            <span>{{ order.quantity}}</span>
+                          
+                      </td>
+                      <td>
+                        <span>{{ order.status}}</span>
+                      </td>
+                         <td>
+                            <button class="btn btn-primary" type="button" >View Detail</button>
+                         </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,30 @@
+<div class="related-products-wrapper">
+    <h2 class="related-products-title">Related Products</h2>
+    <div class="related-products-carousel">
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let related of products" >
+            <ng-template carouselSlide>
+               
+                <div class="single-product">
+                    <div class="product-f-image">
+                        <img [src]="related.image" alt="{{ related.image }}">
+                        <div class="product-hover">
+                            <a class="add-to-cart-link" ><i class="fa fa-shopping-cart"></i>
+                                Add to cart</a>
+                            <a class="view-details-link" routerLink="/product_details/{{ related.id }}"><i class="fa fa-link"></i> See
+                                details</a>
+                        </div>
+                    </div>
+
+                    <h2><a>{{related.product_name}}</a></h2>
+
+                    <div class="product-carousel-price">
+                        <ins>${{related.discount_price}}</ins> <del>${{related.price}}</del>
+                    </div>
+                </div>
+            
+            </ng-template>
+        </ng-container>
+        </owl-carousel-o>
+    </div>
+</div>

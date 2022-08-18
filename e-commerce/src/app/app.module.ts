@@ -33,6 +33,8 @@ import { RecentProductsComponent } from './pages/home/recent-products/recent-pro
 import { HomeSliderComponent } from './pages/home/home-slider/home-slider.component';
 import { LoadingSpinnerComponent } from './pages/register/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './service/auth/auth-interceptor.service';
+import { RelatedProductComponent } from './pages/product-details/related-product/related-product.component';
+import { SelectedProductComponent } from './pages/product-details/selected-product/selected-product.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { AuthInterceptorService } from './service/auth/auth-interceptor.service'
     LatestProductComponent,
     RecentProductsComponent,
     HomeSliderComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    RelatedProductComponent,
+    SelectedProductComponent
   ],
   imports: [
     BrowserModule,

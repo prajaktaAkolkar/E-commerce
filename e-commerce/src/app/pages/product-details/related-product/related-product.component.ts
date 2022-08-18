@@ -3,30 +3,23 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ProductService } from 'src/app/service/product/product.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'app-related-product',
+  templateUrl: './related-product.component.html',
+  styleUrls: ['./related-product.component.css']
 })
-export class ProductComponent implements OnInit {
-    allProducts :any =[];
-    userIdData :any;
-  constructor( private productService : ProductService) { }
+export class RelatedProductComponent implements OnInit {
+  products :any =[];
+  constructor(private productService : ProductService) { }
 
   ngOnInit(): void {
-    this.userIdData = localStorage.getItem('userData');
-    console.log(this.userIdData);
-
     this.productService.getProducts().subscribe(res=>{
-      this.allProducts = res.data;
-      console.log(res);
+     this.products = res.data;
     })
-
   }
-
   customOptions: OwlOptions = {
 		loop: true,
-		mouseDrag: true,
-		touchDrag: true,
+		mouseDrag: false,
+		touchDrag: false,
 		pullDrag: false,
 		dots: false,
 		navSpeed: 300,
@@ -36,7 +29,7 @@ export class ProductComponent implements OnInit {
 				items: 1
 			},
 			400: {
-				items: 2
+				items: 3
 			},
 			760: {
 				items: 3
@@ -44,11 +37,12 @@ export class ProductComponent implements OnInit {
 			1000: {
 				items: 4
 			},
+
 			1200: {
 				items: 5
-			}
-
+			},
 		},
 		nav: true
 	}
+
 }
