@@ -1,1 +1,277 @@
-<p>checkout works!</p>
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Shopping Checkout</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+   <app-layout></app-layout>
+            </div>
+
+            <div class="col-md-8">
+                <div class="product-content-right">
+                    <div class="woocommerce">
+                        <div class="showorder">
+
+                            <h3 id="order_review_heading">Your order</h3>
+        
+                            <div  id="order_review" style="position: relative;">
+                                <table class="shop_table">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-total">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="cart_item">
+                                            <td class="product-name">
+                                                Ship Your Idea <strong class="product-quantity">× 1</strong> </td>
+                                            <td class="product-total">
+                                                <span class="amount">${{ totalAmount }}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+        
+                                        <tr class="cart-subtotal">
+                                            <th>Cart Subtotal</th>
+                                            <td><span class="amount">${{ totalAmount }}</span>
+                                            </td>
+                                        </tr>
+        
+                                        <tr class="shipping">
+                                            <th>Shipping and Handling</th>
+                                            <td>
+        
+                                                Free Shipping
+                                                <input type="hidden" class="shipping_method" value="free_shipping"
+                                                    id="shipping_method_0" data-index="0" name="shipping_method[0]">
+                                            </td>
+                                        </tr>
+        
+        
+                                        <tr class="order-total">
+                                            <th>Order Total</th>
+                                            <td><strong><span class="amount">${{ totalAmount }}</span></strong> </td>
+                                        </tr>
+        
+                                    </tfoot>
+                                </table>
+        
+                                      <span *ngIf="
+                                      checkoutform.get('checkoutInfo').touched &&
+                                            !checkoutform.get('checkoutInfo').valid
+                                        " class="text-msg">Please Fill All the Details!</span>
+                                <div>
+                                  
+        
+                                </div>
+                            </div>
+                        </div>
+                        <form [formGroup]="checkoutform" (ngSubmit)="onSubmit()" enctype="multipart/form-data" class="checkout" method="post" name="checkout">
+
+
+                            <div id="customer_details" class="col2-set billing-field">
+                                <div  formGroupName="checkoutInfo" class="col-1">
+                                    <div class="woocommerce-billing-fields">
+                                        <h3>Billing Details</h3>
+                                        <p id="billing_country_field"
+                                            class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
+                                           
+                                            <label class="" for="billing_country">Country <abbr title="required"
+                                                    class="required">*</abbr>
+                                            </label>
+                                             <select class="country_to_state country_select" id="billing_country"
+                                                name="billing_country" formControlName="country"
+                                                 >
+                                                <option value="">Select a country…</option>
+                                                <option  *ngFor="let country of countries" value="{{ country}}">{{ country }}</option>
+                                            </select>
+                                            <span   
+                                            *ngIf="!checkoutform.get('checkoutInfo.country').valid && checkoutform.get('checkoutInfo.country').touched"
+                                            class="help-block">
+                                            Please select the country!</span>                               
+                                         
+                                        <p id="billing_first_name_field"
+                                            class="form-row form-row-first validate-required">
+                                            
+                                            <label class="" for="billing_first_name">First Name <abbr title="required"
+                                                    class="required">*</abbr>
+                                            </label>
+                                            
+                                            <input type="text" value="" placeholder="" id="billing_first_name"
+                                                name="billing_first_name" class="input-text "  formControlName="first_name">
+                                                <span   
+                                                *ngIf="!checkoutform.get('checkoutInfo.first_name').valid && checkoutform.get('checkoutInfo.first_name').touched"
+                                                class="help-block">Please enter the first name!</span>
+                                        </p>
+
+                                       
+
+                                        <p id="billing_last_name_field"
+                                            class="form-row form-row-last validate-required">
+                                            <label class="" for="billing_last_name">Last Name <abbr title="required"
+                                                    class="required">*</abbr>
+                                            </label>
+                                            <input type="text" value="" placeholder="" id="billing_last_name"
+                                                name="billing_last_name" class="input-text " formControlName="last_name">
+                                                <span   
+                                                *ngIf="!checkoutform.get('checkoutInfo.last_name').valid && checkoutform.get('checkoutInfo.last_name').touched"
+                                                class="help-block">Please enter the last name!</span>
+                                        </p>
+                                        
+
+                                        <p id="billing_company_field" class="form-row form-row-wide">
+                                            <label class="" for="billing_company">Company Name<abbr title="required"
+                                                class="required">*</abbr></label>
+                                            <input type="text" value="" placeholder="" id="billing_company"
+                                                name="billing_company" class="input-text " formControlName="company">
+                                                <span   
+                                                *ngIf="!checkoutform.get('checkoutInfo.company').valid && checkoutform.get('checkoutInfo.company').touched"
+                                                class="help-block">Please enter the company name!</span>
+                                        </p>
+
+                                        <p id="billing_address_1_field"
+                                            class="form-row form-row-wide address-field validate-required">
+                                            <label class="" for="billing_address_1">Address <abbr title="required"
+                                                    class="required">*</abbr>
+                                            </label>
+                                            <input type="text" value="" placeholder="Street address" id="billing_address_1" formControlName="address1" name="billing_address_1" class="input-text ">
+
+                                            <span   
+                                            *ngIf="!checkoutform.get('checkoutInfo.address1').valid && checkoutform.get('checkoutInfo.address1').touched"
+                                            class="help-block">Please enter your address!</span>
+
+                                        </p>
+
+                                        <p id="billing_address_2_field" class="form-row form-row-wide address-field">
+                                            <input type="text" value=""
+                                                placeholder="Apartment, suite, unit etc. (optional)"
+                                                id="billing_address_2" name="billing_address_2" class="input-text " formControlName="address2">
+                                                <span   
+                                                *ngIf="!checkoutform.get('checkoutInfo.address2').valid && checkoutform.get('checkoutInfo.address2').touched"
+                                                class="help-block">Please enter your other address!</span>
+
+                                        </p>
+
+                                        <p id="billing_city_field"
+                                            class="form-row form-row-wide address-field validate-required"
+                                            data-o_class="form-row form-row-wide address-field validate-required">
+
+                                            <label class="" for="billing_city">Town / City <abbr title="required"
+                                                    class="required">*</abbr>
+                                            </label>
+                                            <input type="text" value="" placeholder="Town / City" id="billing_city" formControlName="city" name="billing_city" class="input-text ">
+                                            <span   
+                                            *ngIf="!checkoutform.get('checkoutInfo.city').valid && checkoutform.get('checkoutInfo.city').touched"
+                                            class="help-block">Please enter city!</span>
+                                        </p>
+
+                                        <p id="billing_state_field"
+                                            class="form-row form-row-first address-field validate-state"
+                                            data-o_class="form-row form-row-first address-field validate-state">
+                                            <label class="" for="billing_state">State <abbr title="required"
+                                                class="required">*</abbr></label>
+                                            <input type="text" id="billing_state" name="billing_state"
+
+                                                placeholder="State" value="" class="input-text " formControlName="state">
+                                                <span   
+                                            *ngIf="!checkoutform.get('checkoutInfo.state').valid && checkoutform.get('checkoutInfo.state').touched"
+                                            class="help-block">Please enter the state!</span>
+
+                                    
+                                        </p>
+                                        <p id="billing_postcode_field"
+                                            class="form-row form-row-last address-field validate-required validate-postcode"
+                                            data-o_class="form-row form-row-last address-field validate-required validate-postcode">
+                                            <label class="" for="billing_postcode">Postcode <abbr title="required"
+                                                    class="required">*</abbr>
+                                            </label>
+                                            <input type="text" value="" placeholder="Postcode / Zip"
+
+                                                id="billing_postcode" name="billing_postcode" class="input-text " formControlName="postcode">
+                                                <span   
+                                            *ngIf="!checkoutform.get('checkoutInfo.postcode').valid && checkoutform.get('checkoutInfo.postcode').touched"
+                                            class="help-block">Please enter the postcode!</span>
+
+                                        </p>
+
+                                        <div class="clear"></div>
+
+                                        <p id="billing_email_field"
+                                            class="form-row form-row-first validate-required validate-email">
+                                            <label class="" for="billing_email">Email Address <abbr title="required"
+                                                    class="required">*</abbr>
+                                            </label>
+
+                                            <input type="email" value="" placeholder="" id="billing_email"
+                                                name="billing_email" class="input-text " formControlName="email"><br>
+                                                <span   
+                                                *ngIf="!checkoutform.get('checkoutInfo.email').valid && checkoutform.get('checkoutInfo.email').touched"
+                                                class="help-block">Please enter the email!</span>
+                                        </p>
+
+                                        <p id="billing_phone_field"
+                                            class="form-row form-row-last validate-required validate-phone">
+                                            <label class="" for="billing_phone">Phone <abbr title="required"
+                                                    class="required">*</abbr>
+                                            </label>
+                                            <input type="text" value="" placeholder="" id="billing_phone" name="billing_phone" formControlName="phone" class="input-text ">
+                                            <span   
+                                            *ngIf="!checkoutform.get('checkoutInfo.phone').valid && checkoutform.get('checkoutInfo.phone').touched"
+                                            class="help-block">Please enter the phone number!</span>
+
+                                        </p>
+                                        <p id="order_comments_field" class="form-row notes">
+                                            <label class="" for="order_comments">Order Notes</label>
+                                            <textarea cols="5" rows="2" placeholder="Notes about your order, e.g. special notes for delivery." 
+                                            id="order_comments"
+                                             class="input-text " 
+                                             name="order_comments"
+                                             formControlName="optional"></textarea>
+                                             <span   
+                                            *ngIf="!checkoutform.get('checkoutInfo.optional').valid && checkoutform.get('checkoutInfo.optional').touched"
+                                            class="help-block">Please enter optional field!</span>
+
+
+                                        </p>
+                                        <div>
+                                            <button class="btn btn-primary" type="submit" >Payment</button>
+    </div>
+      <!-- <div>
+                                        <button class="btn btn-primary" type="submit" >Payment</button>
+        </div> -->
+                                        <!-- <input type="submit" [disabled]="!checkoutform.valid" data-value="Place order" value="Payment"
+                                            id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+                                    </div> -->
+        
+                                    <!-- <div class="clear"></div> -->
+                                        <div class="clear"></div>
+
+                                        
+                                    </div>
+                                </div>
+                            </div>
+       
+                        </form>
+
+                    </div>
+            
+                </div>
+        
+            </div>
+        </div>
+    </div>
+</div>

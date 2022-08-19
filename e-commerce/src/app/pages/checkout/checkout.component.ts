@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-
+  checkoutform : any;
+  totalAmount : any;
+  countries : any = [];
   constructor() { }
 
   ngOnInit(): void {
+  }
+  onSubmit(){
+
   }
 
 }
