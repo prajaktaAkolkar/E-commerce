@@ -7,13 +7,22 @@ import { ProductService } from 'src/app/service/product/product.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
- products :any = [];
-  constructor(private productService : ProductService) { }
+  products: any=[];
+  quantitydetail:any=0;
+isSelected:boolean = true;
+isReview:boolean = false;
+  constructor(private allproducts: ProductService) { }
 
-  ngOnInit(): void {
-    this.productService.getProducts().subscribe(res=>{
-      this.products = res.data;
+	ngOnInit(): void {
+    this.allproducts.getProducts().subscribe(res => {
+      this.products = res.data; 
     })
+	}
+
+    
+  isTab() {
+   this.isSelected= false;
+   this.isReview = true;
   }
 
 }

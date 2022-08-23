@@ -1,1 +1,52 @@
-<p>selected-product works!</p>
+
+    <div class="row" *ngIf="id == selectproduct.id" >
+       
+        <div class="col-sm-6">
+            <div class="product-images">
+                <div class="product-main-img">
+                    <img *ngIf="!selectedImage"  [src]="selectproduct.image" alt="{{ selectproduct.image}}" height="250px" width="250px">
+                    <img *ngIf="selectedImage" [src]="mainImage" alt="{{ mainImage}}" height="250px" width="250px">
+                </div>
+
+                <div class="product-gallery">
+                    <img [src]="selectproduct.image" (click)="changeMainImg(selectproduct.image)">
+                    <!-- <img [src]="selectproduct.thumbs.thumb2" (click)="changeMainImg(selectproduct.thumbs.thumb2)">
+                    <img [src]="selectproduct.thumbs.thumb3" (click)="changeMainImg(selectproduct.thumbs.thumb3)">
+                 -->
+                 <!-- <img [src]="thumb1" alt="{{ thumb1 }}" (click)="changeMainImg(thumb1)">
+                 <img [src]="thumb2" alt="{{ thumb2 }}" (click)="changeMainImg(thumb2)">
+                 <img [src]="thumb3" alt="{{ thumb3 }}" (click)="changeMainImg(thumb3)"> -->
+                </div>
+            </div>
+        </div>
+
+     <div class="col-sm-6">
+        <div class="product-inner">
+            <h2 class="product-name">{{ selectproduct.product_name }}</h2>
+            <div class="product-inner-price">
+                <ins>${{ selectproduct.discount_price }}</ins> <del>${{ selectproduct.price }}</del>
+            </div>
+
+            <form  class="cart" >
+                <div  class="quantity">
+                    <input 
+                     type="number"
+                      size="5" 
+                      class="input-text qty text" 
+                      disabled="value == 1"
+                      value="1"
+                      title="Qty" 
+                       min="1" step="1">
+                </div>
+               <button class="add_to_cart_button" (click)="addToCart(selectproduct)" type="submit">Add to cart</button>
+            </form>
+
+            <div class="product-inner-category">
+                <p>Category: <a>{{ selectproduct.Category }}</a>. Tags: <a  *ngFor="let tag of selectproduct.Tags">{{tag}} ,</a> </p>
+            </div>
+           <div>
+            <p>{{ selectproduct.details }}</p>
+           </div>
+        </div>
+    </div>
+</div>

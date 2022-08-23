@@ -1,0 +1,8 @@
+
+    <div class="product-main-img" *ngIf="id == selectproduct.prodID">
+        <img *ngIf="!selected" [src]="selectproduct.img" alt="{{ selectproduct.img}}" >
+    </div>
+    <div class="product-main-img" *ngIf="id == selectproduct.prodID">
+        <img *ngIf="selected" [src]="selectproduct.img" alt="{{ selectproduct.img}}">
+    </div>
+   

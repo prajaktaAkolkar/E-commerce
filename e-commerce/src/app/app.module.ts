@@ -35,6 +35,7 @@ import { LoadingSpinnerComponent } from './pages/register/loading-spinner/loadin
 import { AuthInterceptorService } from './service/auth/auth-interceptor.service';
 import { RelatedProductComponent } from './pages/product-details/related-product/related-product.component';
 import { SelectedProductComponent } from './pages/product-details/selected-product/selected-product.component';
+import { MainImageComponent } from './pages/product-details/selected-product/main-image/main-image.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { SelectedProductComponent } from './pages/product-details/selected-produ
     HomeSliderComponent,
     LoadingSpinnerComponent,
     RelatedProductComponent,
-    SelectedProductComponent
+    SelectedProductComponent,
+    MainImageComponent
   ],
   imports: [
     BrowserModule,
