@@ -36,6 +36,7 @@ export class HeaderSecondComponent implements OnInit {
 			(res: any)=> {
 	
 				this.totalItemNumber = res;
+				console.log(this.totalItemNumber)
 			}
 		);
 

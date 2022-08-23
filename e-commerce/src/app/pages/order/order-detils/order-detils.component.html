@@ -1,0 +1,46 @@
+
+<div class="container" *ngFor="let detail of details">
+ 
+    <!-- Left Column / Headphones Image -->
+    <!-- <div class="left-column">
+      <img data-image="black" src="images/black.png" alt="">
+      <img data-image="blue" src="images/blue.png" alt="">
+      <img data-image="red" class="active" src="images/red.png" alt="">
+    </div> -->
+   
+   
+    <!-- Right Column -->
+    <div class="right-column" *ngIf="id == detail.id">
+       <img  src="{{ detail.banner}}" alt="">
+      <!-- Product Description -->
+          <div class="product-description">
+          
+          <h1>{{ detail.product_name }}</h1>
+          <p>{{ detail.details }}</p>
+          </div>
+      
+      <!-- Product Configuration -->
+              <div class="product-configuration">
+          
+              <!-- Product Color -->
+      
+              <!-- Cable Configuration -->
+              <div class="cable-config">
+                  <span>Quantity : {{ detail.quantity }}</span>
+          
+                  <div class="cable-choose">
+                  <span>Price : {{ detail.price}}</span>
+                  </div>
+          
+                  
+              </div>
+              </div>
+   
+              <!-- Product Pricing -->
+              <div class="product-price">
+              <span> Status :{{ detail.status}}</span>
+             <span> Payment Status: {{ detail.payment_status}}</span>
+              </div>
+              <a routerLink="/products">Go to shopping</a>
+    </div>
+  </div>

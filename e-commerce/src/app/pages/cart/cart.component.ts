@@ -41,6 +41,7 @@ export class CartComponent implements OnInit {
 
 		//to emit amount in the cart totals
 		this.cart.emitAmount.subscribe(res => {
+			console.log("cartCheck",res);
 			this.productTotalAmount = res;
 		})
 

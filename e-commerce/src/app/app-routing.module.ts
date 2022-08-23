@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { HomeComponent } from './pages/home/home.component';
+import { OrderDetilsComponent } from './pages/order/order-detils/order-detils.component';
 import { OrderComponent } from './pages/order/order.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProductComponent } from './pages/product/product.component';
@@ -21,8 +22,16 @@ const routes: Routes = [
   },
   {path : 'checkout',component:CheckoutComponent, canActivate :[AuthGuard]},
   {path :'cart', component:CartComponent, canActivate :[AuthGuard]},
+//   { path: 'payment',
+//  component: PaymentComponent ,
+//  canActivate: [AuthGuard],
+// },
   { path: 'orders',
  component: OrderComponent ,
+ canActivate: [AuthGuard],
+},
+{ path: 'order_details',
+ component: OrderDetilsComponent ,
  canActivate: [AuthGuard],
 },
 ];
