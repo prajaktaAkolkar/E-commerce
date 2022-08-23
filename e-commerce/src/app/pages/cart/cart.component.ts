@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/service/product/product.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  itemprice: number = 0;
+	itemprice: number = 0;
 	itemqty: number = 0;
 
 	productTotalAmount: number = 0;
@@ -178,7 +178,6 @@ export class CartComponent implements OnInit {
 		this.router.navigate(["checkout"]);
 
 	}
-
 
 
 }
