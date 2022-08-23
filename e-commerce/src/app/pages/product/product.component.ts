@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from 'src/app/service/cart/cart.service';
 import { ProductService } from 'src/app/service/product/product.service';
 
 @Component({
@@ -10,7 +13,10 @@ import { ProductService } from 'src/app/service/product/product.service';
 export class ProductComponent implements OnInit {
     allProducts :any =[];
     userIdData :any;
-  constructor( private productService : ProductService) { }
+	item : any;
+  constructor( private productService : ProductService,
+	private cartService : CartService,
+	private router : Router) { }
 
   ngOnInit(): void {
     this.userIdData = localStorage.getItem('userData');
@@ -22,6 +28,33 @@ export class ProductComponent implements OnInit {
     })
 
   }
+
+  addToCart(item: any) {
+
+	let product_id = item.id;
+	let quant = (item.quantity);
+
+	const user_id = JSON.parse(this.userIdData)
+	const userId = user_id.id;
+	const userToken = user_id._token;
+	let quant_minus = '';
+
+	//to add to cart 
+	this.cartService.getAddToCart(userId, product_id, quant, quant_minus).subscribe(
+		res => {
+			this.item = res.data;
+			console.log(this.item);
+
+		});
+
+	//to display on cart
+	this.cartService.getDisplayCartItems(userId).subscribe(res => {
+
+		this.cartService.totalItemsCount(res.data);
+		this.cartService.recalculateTotalAmount(res.data);
+	})
+	
+}
 
   customOptions: OwlOptions = {
 		loop: true,

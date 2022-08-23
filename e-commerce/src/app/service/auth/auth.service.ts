@@ -90,15 +90,15 @@ export class AuthService{
             new Date(userData._tokenExpirationDate));
             if(loadedUser.token){
                 this.user.next(loadedUser);
-                this.autoLogout(2000);
+               // this.autoLogout(2000);
             }
     }
 
-    autoLogout(expirationDuration : number){
-  this.tokenExpirationTimer =  setTimeout(()=>{
-      this.logout();
-    },2000)
-    }
+//     autoLogout(expirationDuration : number){
+//   this.tokenExpirationTimer =  setTimeout(()=>{
+//       this.logout();
+//     },2000)
+//     }
 
     private handleError(errorRes: HttpErrorResponse) {
         let errorMessage = 'An unknown error ouccured!';
