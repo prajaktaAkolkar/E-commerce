@@ -27,7 +27,7 @@ export class CartComponent implements OnInit {
 	productCount: any = 0;
 	user_id: any;
 
-	constructor(private cart: CartService,
+	constructor(private cartService: CartService,
 
 		private product: ProductService,
 		private router: Router,
@@ -40,7 +40,7 @@ export class CartComponent implements OnInit {
 
 
 		//to emit amount in the cart totals
-		this.cart.emitAmount.subscribe(res => {
+		this.cartService.emitAmount.subscribe(res => {
 			console.log("cartCheck",res);
 			this.productTotalAmount = res;
 		})
@@ -56,7 +56,7 @@ export class CartComponent implements OnInit {
 
 
 		//to get the data of all products being added
-		this.cart.getProductData().subscribe(res => {
+		this.cartService.getProductData().subscribe(res => {
 
 			this.products += res;
 			console.log(res);
@@ -67,7 +67,7 @@ export class CartComponent implements OnInit {
 
 
 		//for displaying items at cart page
-		this.cart.getDisplayCartItems(userId).subscribe(
+		this.cartService.getDisplayCartItems(userId).subscribe(
 			res => {
 				this.products = res.data;
 				console.log(this.products);
@@ -75,7 +75,7 @@ export class CartComponent implements OnInit {
 			});
 
 		//for displaying total product count in header cart
-		this.cart.totalItemsCount(this.cart.productCount);
+		this.cartService.totalItemsCount(this.cartService.productCount);
 
 	}
 
@@ -85,19 +85,19 @@ export class CartComponent implements OnInit {
 		const user_id = JSON.parse(this.userIdData)
 		const userId = user_id.id;
 
-		this.cart.getRemoveCartItem(item).subscribe(res => {
+		this.cartService.getRemoveCartItem(item).subscribe(res => {
 			// console.log(res);
 
 			this.data = res.data;
 
 
-			this.cart.getDisplayCartItems(userId).subscribe(
+			this.cartService.getDisplayCartItems(userId).subscribe(
 				res => {
 					this.products = res.data;
 					console.log(this.products);
 
-					this.cart.recalculateTotalAmount(this.products);
-					this.cart.totalItemsCount(this.products);
+					this.cartService.recalculateTotalAmount(this.products);
+					this.cartService.totalItemsCount(this.products);
 				});
 		});
 
@@ -111,21 +111,21 @@ export class CartComponent implements OnInit {
 
 		item.quant = +item.quant + 1;
 
-		this.cart.recalculateTotalAmount(this.products);
-		this.cart.totalItemsCount(this.products);
+		this.cartService.recalculateTotalAmount(this.products);
+		this.cartService.totalItemsCount(this.products);
 
 		let quant_minus = '';
 
 		if (item.cart_id) {
 
 			let quantity = 1;
-			this.cart.getAddToCart(userId, item.id, quantity, quant_minus).subscribe(res => {
+			this.cartService.getAddToCart(userId, item.id, quantity, quant_minus).subscribe(res => {
 				console.log(res);
 
 			})
 		}
 
-		this.cart.getDisplayCartItems(userId).subscribe(
+		this.cartService.getDisplayCartItems(userId).subscribe(
 			res => {
 				this.products = res.data;
 				console.log(this.products);
@@ -134,43 +134,30 @@ export class CartComponent implements OnInit {
 
 	}
 
-
 	onDecrement(item:any) {
 		const user_id = JSON.parse(this.userIdData)
 		const userId = user_id.id;
-
-		// if(this.products[index].quant - 1 <1){
-		// 	this.products[index].quant =1
-		// } else { 
-		// 	this.products[index].quant -= 1
-		// }
-
 		if(item.quant - 1 < 1){
 			item.quant = 1
 		} else {
 			item.quant -= 1
 		}
 
-		this.cart.recalculateTotalAmount(this.products);
-		let quant_minus = 'mahak';
-		// this.cart.emitAmount.next(this.productTotalAmount);
+		this.cartService.recalculateTotalAmount(this.products);
+		let quant_minus = '';
 
-		this.cart.totalItemsCount(this.products);
+		this.cartService.totalItemsCount(this.products);
 		if (item.cart_id) {
 			let quantity = 1;
-			this.cart.getAddToCart(userId, item.id, quantity, quant_minus).subscribe(res => {
+			this.cartService.getAddToCart(userId, item.id, quantity, quant_minus).subscribe(res => {
 				console.log(res);
-
 
 			})
 		}
 		
-		this.cart.totalItemsCount(this.products);
+		this.cartService.totalItemsCount(this.products);
 
 	}
-
-
-
 
 	onCheckout(amount: any) {
 		this.checkoutService.totalfinalAmount = amount;

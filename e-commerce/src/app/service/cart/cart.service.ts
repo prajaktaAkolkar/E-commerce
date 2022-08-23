@@ -52,8 +52,7 @@ export class CartService implements OnInit {
         const user_id = JSON.parse(this.userIdData)
         const userId = user_id.id;
         const userToken = user_id._token;
-        // this.allproducts = this.products.getProducts();
-
+        
         this.products.getProducts().subscribe(res => {
             this.allproducts = res.data;
         })
@@ -64,8 +63,6 @@ export class CartService implements OnInit {
                 this.product = res.data;
                 console.log(this.product);
             });
-
-
     }
 
     //post api for add to cart
@@ -120,7 +117,6 @@ export class CartService implements OnInit {
         this.cartDataList.push(product);
         this.productList.next(this.cartDataList);
 
-        // this.getTotalAmount();
     }
 
     orderTotal() {
@@ -141,15 +137,6 @@ export class CartService implements OnInit {
         }
         return grandTotal;
     }
-
-    // removeCartData(product: any) {
-
-    //     // this.cartDataList.splice(product, 1);
-    //     // this.productList.next(this.cartDataList.slice());
-
-    //     // this.productList.next(this.cartDataList)
-    // }
-
 
     gettotal() {
         return this.getTotalAmount();
